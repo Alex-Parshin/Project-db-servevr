@@ -1,11 +1,12 @@
 let express = require("express");
-	cors = require("cors");
+	cors = require("cors"),
+	bodyParser=require("body-parser");
 let app = express();
 app.use(cors());
 let db,collection;
 let users = [{name: "Bob", age: 34} , {name: "Alice", age: 21}, {name: "Tom", age: 45}];
 	
-
+let urlencodedParser= bodyParser.urlencoded({extended:false});
 const MongoClient = require("mongodb").MongoClient;
 
 
@@ -20,12 +21,14 @@ app.get("/",function(request,response){
 	response.send("/index.html");
 });
 
-app.get("/add",function(request,response){
+app.post("/add",urlencodedParser,function(request,response){
 
+	
+	console.log(request.body.name);
 	collection.insertMany(users, function(err, results){
 				  
-		console.log(results);
-		response.send(results);
+	//	console.log(results);
+		//response.send(results);
 		//dbClient.close();
 		
 

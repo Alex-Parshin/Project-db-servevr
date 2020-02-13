@@ -1,5 +1,7 @@
-let button= document.getElementById("request");
+/*let button= document.getElementById("request");
 	button.addEventListener("click",function(){
+		let string={
+		}
 		let xhr=new XMLHttpRequest();
 		xhr.open("GET","http://localhost:591/add",true);
 		xhr.onreadystatechange=function(){
@@ -11,8 +13,12 @@ let button= document.getElementById("request");
 			}
 			}
 		};
-		xhr.send();
-	});
+		let form = document.forms.myform;
+		string.name = form.elements.name.value;
+		string.age = form.elements.age.value;
+		let sends = JSON.stringify(string);
+		xhr.send(sends);
+	});*/
 	let user;
 	let button1= document.getElementById("request1");
 	let block=document.getElementById("block");
@@ -61,6 +67,9 @@ let button= document.getElementById("request");
 		
 		xhr.send();
 	  });
+
+	 
+
 /*$('#request1').on("click",function(){
 	let request=$.get("http://localhost:8080");
 		//let request=$.get("http://localhost:591/folder/page",{foo:"a",bar:"b"});
