@@ -25,7 +25,7 @@ app.post("/add",urlencodedParser,function(request,response){
 
 	
 	console.log(request.body.name);
-	collection.insertMany(users, function(err, results){
+	collection.insertOne(users, function(err, results){
 				  
 	//	console.log(results);
 		//response.send(results);

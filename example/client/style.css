@@ -32,7 +32,7 @@
 }
 .item_img{
     width: 100%;
-    height: auto;
+    height: 100%;
     position: absolute;
     left: 0px;
     top: 0px;
