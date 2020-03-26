@@ -28,10 +28,9 @@ app.post("/add",urlencodedParser,function(request,response){
 		img: request.body.image,
 		text: request.body.description
 	}
-	item_send=JSON.stringify(item);
 	console.log(item);
 	collection.insertOne(item, function(err, results){
-				  
+	response.redirect("/");
 	//	console.log(results);
 
 	//	dbClient.close();
@@ -50,13 +49,46 @@ app.get("/gets",function(request,response){
 });
 });
 
+app.get("/check_users",function(request,response){
+ 
+	users.find().toArray(function(err, results){
+                                  
+		console.log(results);
+		response.send(results);
+		response.redirect("/");
+		//dbClient.close();
+
+});
+});
+
+app.post("/registration",urlencodedParser,function(request,response){
+ 
+	console.log(request.body.login);
+	console.log(request.body.password);
+	let item={
+		login: request.body.login,
+		password: request.body.password
+	}
+	users.insertOne(item, function(err, results){
+	
+		//	console.log(results);
+	
+		//	dbClient.close();
+	
+	
+	});
+	
+});
+
+
 mongoClient.connect(function(err, client){
       
 	if(err) return console.log(err);
     dbClient = client;
 	db = client.db("sandbox");
 	collection = db.collection("items");
-    app.listen(8080, function(){
+	users = db.collection("items");
+    app.listen(80, function(){
         console.log("Сервер ожидает подключения...");
     });
 });
